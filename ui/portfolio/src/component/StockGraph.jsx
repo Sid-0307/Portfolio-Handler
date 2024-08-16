@@ -7,7 +7,7 @@ import "../App.css";
 Chart.register(CategoryScale);
 
 const StockGraph = ({ stockSymbol }) => {
-  const apiKey = "U16ZZORWI0YJYL9K";
+  const apiKey = process.env.REACT_APP_GRAPH_KEY;
 
   const [error, setError] = useState("");
   const [interval, setInterval] = useState("60min");

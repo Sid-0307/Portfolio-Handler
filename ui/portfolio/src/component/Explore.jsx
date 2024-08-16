@@ -23,7 +23,7 @@ const Explore = () => {
       const newData = await axios
         .get(
           `http://neilapi.neueda.com/API/StockFeed/GetStockPricesForSymbol/${stockSymbol.toLowerCase()}`
-          // `https://financialmodelingprep.com/api/v3/quote/${stockSymbol.toUpperCase()}?apikey=C6lESxodopbdnyTOl9Fud6w9sixrWZMD`
+          // `https://financialmodelingprep.com/api/v3/quote/${stockSymbol.toUpperCase()}?apikey=${process.env.REACT_APP_FINANCIAL_MODEL_API_KEY}`
         )
         .then((res) => res.data)
         .then((res) => res[0]);
