@@ -7,8 +7,7 @@ import "../App.css";
 Chart.register(CategoryScale);
 
 const StockGraph = ({ stockSymbol }) => {
-  const apiKey = process.env.REACT_APP_GRAPH_KEY;
-
+  const apiKey = import.meta.env.VITE_APP_GRAPH_KEY;
   const [error, setError] = useState("");
   const [interval, setInterval] = useState("60min");
   const [currentStockData, setCurrentStockData] = useState(null);

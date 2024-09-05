@@ -23,7 +23,7 @@ const Explore = () => {
       const newData = await axios
         .get(
           `http://neilapi.neueda.com/API/StockFeed/GetStockPricesForSymbol/${stockSymbol.toLowerCase()}`
-          // `https://financialmodelingprep.com/api/v3/quote/${stockSymbol.toUpperCase()}?apikey=${process.env.REACT_APP_FINANCIAL_MODEL_API_KEY}`
+          // `https://financialmodelingprep.com/api/v3/quote/${stockSymbol.toUpperCase()}?apikey=${import.meta.env.REACT_APP_FINANCIAL_MODEL_API_KEY}`
         )
         .then((res) => res.data)
         .then((res) => res[0]);
@@ -33,6 +33,7 @@ const Explore = () => {
         // name: newData.name,
         currentPrice: parseFloat(newData.price).toFixed(2),
       };
+      console.log(stockSymbol, item);
       setDialogItem(item);
     } catch (error) {
       console.error("Error fetching stock data:", error);

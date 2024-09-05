@@ -73,7 +73,7 @@ const Portfolio = () => {
           const newPrice = await axios
             .get(
               `http://neilapi.neueda.com/API/StockFeed/GetStockPricesForSymbol/${res.symbol.toLowerCase()}`
-              // `https://financialmodelingprep.com/api/v3/quote/${res.symbol.toUpperCase()}?apikey=${process.env.REACT_APP_FINANCIAL_MODEL_API_KEY}`
+              // `https://financialmodelingprep.com/api/v3/quote/${res.symbol.toUpperCase()}?apikey=${import.meta.env.REACT_APP_FINANCIAL_MODEL_API_KEY}`
             )
             .then((res) => res.data)
             .then((r) => parseFloat(r[0].price).toFixed(2));
@@ -139,7 +139,9 @@ const Portfolio = () => {
   const getCurrencyRate = async () => {
     const rates = await axios
       .get(
-        `https://v6.exchangerate-api.com/v6/${process.env.REACT_APP_CURRENCY_API_KEY}/latest/USD`
+        `https://v6.exchangerate-api.com/v6/${
+          import.meta.env.VITE_APP_CURRENCY_API_KEY
+        }/latest/USD`
       )
       .then((response) => response.data.conversion_rates);
     setCurrencyRate(rates);
