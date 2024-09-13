@@ -14,14 +14,17 @@ const Dialog = ({ item, action, onClose, onSuccess }) => {
 
   const buyStock = async (shares) => {
     try {
-      const response = await axios.post("http://localhost:8080/api/buy", {
-        symbol: item.symbol,
-        name: item.name,
-        quantity: shares,
-        price: item.currentPrice,
-        investedAmt: parseFloat(totalAmount).toFixed(2),
-        revenue: 0,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_URL}/api/buy`,
+        {
+          symbol: item.symbol,
+          name: item.name,
+          quantity: shares,
+          price: item.currentPrice,
+          investedAmt: parseFloat(totalAmount).toFixed(2),
+          revenue: 0,
+        }
+      );
 
       if (response.status === 201 || response.status === 200) {
         Swal.fire({
@@ -44,14 +47,17 @@ const Dialog = ({ item, action, onClose, onSuccess }) => {
 
   const sellStock = async (shares) => {
     try {
-      const response = await axios.put("http://localhost:8080/api/sell", {
-        symbol: item.symbol,
-        name: item.name,
-        quantity: shares,
-        price: item.currentPrice,
-        investedAmt: totalAmount,
-        revenue: 0,
-      });
+      const response = await axios.put(
+        `${import.meta.env.VITE_APP_URL}/api/sell`,
+        {
+          symbol: item.symbol,
+          name: item.name,
+          quantity: shares,
+          price: item.currentPrice,
+          investedAmt: totalAmount,
+          revenue: 0,
+        }
+      );
 
       if (response.status === 201 || response.status === 200) {
         Swal.fire({

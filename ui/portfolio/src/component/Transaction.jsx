@@ -24,7 +24,7 @@ const Transaction = () => {
   const fetchData = async () => {
     try {
       const response = await axios
-        .get("http://localhost:8080/api/myTransactions")
+        .get(`${import.meta.env.VITE_APP_URL}/api/myTransactions`)
         .then((res) => res.data);
       if (!response.status == 200) {
         throw new Error("Network response was not ok");

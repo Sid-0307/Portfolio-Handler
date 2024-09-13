@@ -34,7 +34,7 @@ const Portfolio = () => {
   const fetchValues = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/myInvestments"
+        `${import.meta.env.VITE_APP_URL}/api/myInvestments`
       );
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
@@ -54,7 +54,9 @@ const Portfolio = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/api/myHoldings");
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_URL}/api/myHoldings`
+      );
       if (response.status !== 200) {
         throw new Error("Network response was not ok");
       }
